@@ -1,0 +1,8 @@
+/Users/Guest/Desktop/Airline.Solution/Airline/bin/Debug/netcoreapp1.1/Airline.deps.json
+/Users/Guest/Desktop/Airline.Solution/Airline/bin/Debug/netcoreapp1.1/Airline.runtimeconfig.json
+/Users/Guest/Desktop/Airline.Solution/Airline/bin/Debug/netcoreapp1.1/Airline.runtimeconfig.dev.json
+/Users/Guest/Desktop/Airline.Solution/Airline/bin/Debug/netcoreapp1.1/Airline.dll
+/Users/Guest/Desktop/Airline.Solution/Airline/bin/Debug/netcoreapp1.1/Airline.pdb
+/Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp1.1/Airline.AssemblyInfo.cs
+/Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp1.1/Airline.dll
+/Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp1.1/Airline.pdb
