@@ -114,7 +114,7 @@ namespace Airline.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT flights.* FROM cities
-                JOIN cities_flights ON (cities.id = cities_flights.category_id)
+                JOIN cities_flights ON (cities.id = cities_flights.city_id)
                 JOIN flights ON (cities_flights.flight_id = flights.id)
                 WHERE cities.id = @CityId;";
 
@@ -130,10 +130,9 @@ namespace Airline.Models
             {
               int FlightId = rdr.GetInt32(0);
               int FlightDepartureTime = rdr.GetInt32(1);
-              string FlightDepartureCity = rdr.GetString(2);
-              string FlightArrivalCity = rdr.GetString(3);
-              string FlightFlightStatus = rdr.GetString(4);
-              Flight newFlight = new Flight(FlightDepartureTime, FlightDepartureCity, FlightArrivalCity, FlightFlightStatus, FlightId);
+              string FlightArrivalCity = rdr.GetString(2);
+              string FlightFlightStatus = rdr.GetString(3);
+              Flight newFlight = new Flight(FlightDepartureTime, FlightArrivalCity, FlightFlightStatus, FlightId);
               flights.Add(newFlight);
             }
             conn.Close();
@@ -148,12 +147,12 @@ namespace Airline.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO cities_items (category_id, flight_id) VALUES (@CityId, @FlightId);";
+            cmd.CommandText = @"INSERT INTO cities_flights (city_id, flight_id) VALUES (@CityId, @FlightId);";
 
-            MySqlParameter category_id = new MySqlParameter();
-            category_id.ParameterName = "@CityId";
-            category_id.Value = _id;
-            cmd.Parameters.Add(category_id);
+            MySqlParameter city_id = new MySqlParameter();
+            city_id.ParameterName = "@CityId";
+            city_id.Value = _id;
+            cmd.Parameters.Add(city_id);
 
             MySqlParameter flight_id = new MySqlParameter();
             flight_id.ParameterName = "@FlightId";
@@ -172,7 +171,7 @@ namespace Airline.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
 
-      MySqlCommand cmd = new MySqlCommand("DELETE FROM cities WHERE id = @CityId; DELETE FROM cities_items WHERE category_id = @CityId;", conn);
+      MySqlCommand cmd = new MySqlCommand("DELETE FROM cities WHERE id = @CityId; DELETE FROM cities_items WHERE city_id = @CityId;", conn);
       MySqlParameter cityIdParameter = new MySqlParameter();
       cityIdParameter.ParameterName = "@CityId";
       cityIdParameter.Value = this.GetId();

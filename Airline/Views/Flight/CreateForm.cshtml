@@ -1,0 +1,21 @@
+<h2>Add a Flight</h2>
+<hr />
+<form  action="/flights" method="post">
+  <label for="depart-time">Departure Time:</label>
+  <input type="text" name="depart-time" required>
+
+  <select class="selectDepartCity" name="city">
+    @foreach (var cities in Model)
+    {
+      <option value="@cities.GetId()">@cities.GetCity()</option>
+    }
+  </select>
+  <label for="arrival-city">Destination:</label>
+  <input type="text" name="arrival-city" required>
+  <label for="flight-status">Flight status:</label>
+  <input type="text" name="flight-status" required>
+  <button type="submit" name="button">Add Flight</button>
+
+</form>
+<p><a href="/">Back home</a></p>
+<p><a href="/flights">View all flights</a></p>
